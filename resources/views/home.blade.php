@@ -2,13 +2,20 @@
 @section("hueco")
 <div class="row">
     <div class="col-12 col-lg-8 offset-lg-2">
-        <form>
+        <form action="/notes" method="POST">
+        @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="exampleInputEmail1" class="form-label">Titulo</label> 
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" name="title">
+                @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control @error('content') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                @error('content')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
