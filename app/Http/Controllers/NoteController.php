@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -10,9 +11,17 @@ class NoteController extends Controller
     {
        
         $validated = $request->validate([
-            'title' => 'required|max:10',
+            'title' => 'required|max:100',
             'content' => 'required',
         ]);
-        dd($validated);
+        Note::create($validated);
+        /* La misma forma sin simplificar */
+        /* Note::create([
+            'title' => $validated['title'],
+            'content' => $validated['content']   
+            ]); */
+                
+        return redirect()->route('home');
+            
     }
 }

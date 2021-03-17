@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 
 /*
@@ -14,7 +15,10 @@ use App\Http\Controllers\NoteController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::post('/notes', [NoteController::class,'store']);
+// GLOBAL
+Route::get('/', [HomeController::class,'home'])->name('home');
+   
+
+
+// ESPECIFICO
+Route::post('/notes', [NoteController::class,'store'])->name('notes.store');
