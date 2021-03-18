@@ -17,6 +17,8 @@
                     </div>
                 </div>
             </div>
+            @auth
+            @if(auth()->id()==$note->user_id)
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -55,6 +57,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @endauth
         </div>
     </div>
 </div>
