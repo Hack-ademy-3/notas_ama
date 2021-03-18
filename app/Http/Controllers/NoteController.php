@@ -27,7 +27,7 @@ class NoteController extends Controller
 
     public function show($id)   
     {
-        $note = Note::findOrFail($id);
-        return view('note',['note'=>$note]);
+        $n = Note::findOrFail($id);
+        return view('note',['note'=>$n]);
     }
 }
