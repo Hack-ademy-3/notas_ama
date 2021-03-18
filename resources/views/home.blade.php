@@ -28,7 +28,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$note->title}}</h5>
                 <p class="card-text">{{$note->content}}</p>
-                <a href="#" class="card-link">Card link</a>
+                <a href="{{route('notes.show', ['id'=>$note->id])}}" class="card-link">Detalle</a>
                 <a href="#" class="card-link">Another link</a>
             </div>
         </div>

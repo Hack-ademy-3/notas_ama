@@ -22,3 +22,5 @@ Route::get('/', [HomeController::class,'home'])->name('home');
 
 // ESPECIFICO
 Route::post('/notes', [NoteController::class,'store'])->name('notes.store');
+
+Route::get('/notes/{id}', [NoteController::class, 'show'])->where('id', '[0-9]+')->name('notes.show');
