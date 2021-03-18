@@ -30,4 +30,37 @@ class NoteController extends Controller
         $note = Note::findOrFail($id);
         return view('note',['note'=>$note]);
     }
+
+    public function update($id, Request $request)
+    {
+        //Para modificar algo, hay que recuperar lo que quiero modificar
+        $note = Note::findOrFail($id);
+
+        //Antes de modificar, recupero los datos con los cuales quiero modificar los datos
+        $validateddata = $request->validate([
+            'title' => 'required|max:100',
+            'content' => 'required',
+        ]);
+
+        //Antes de devolver todo, modificamos la nota
+            $note->title=$validateddata['title'];
+            $note->content=$validateddata['content'];
+            $note->save();
+
+
+        //Luego return redirect
+        return redirect()->back();
+
+    }
+
+    public function delete($id)
+    {   
+        //Recuperamos el dato que queremos borrar
+        $note = Note::findOrFail($id);
+
+        //Borramos la nota y salimos
+        $note->delete();
+
+        return redirect()->route('home');
+    }
 }

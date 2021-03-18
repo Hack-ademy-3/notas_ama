@@ -24,3 +24,8 @@ Route::get('/', [HomeController::class,'home'])->name('home');
 Route::post('/notes', [NoteController::class,'store'])->name('notes.store');
 
 Route::get('/notes/{id}', [NoteController::class, 'show'])->where('id', '[0-9]+')->name('notes.show');
+
+Route::put('/notes/{id}', [NoteController::class, 'update'])->where('id', '[0-9]+')->name('notes.update');
+
+Route::delete('/notes/{id}', [NoteController::class, 'delete'])->where('id', '[0-9]+')->name('notes.delete');
+

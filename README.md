@@ -15,8 +15,9 @@ El objetivo del proyecto es que un usuario pueda crear notas solo si se ha conec
         - Crear nuestra migración 
         - Crear la tabla de nuestras notas
     - Guardar las notas que recibimos del formulario
-    - Leer una nota
-    - Update y delete de las notas
+    - Leer una nota (crear la vista, crear método controller)
+    - Update de las notas 
+    - Delete de las notas
     - Autentificacion con fortify
     - Relacion 1 a N entre note y user
     - Adaptar el codigo de la CRUD para que solo el usuario pueda crear, modificar y eliminar las notas
