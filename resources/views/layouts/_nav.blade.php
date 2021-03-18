@@ -14,11 +14,18 @@
             Profile
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Hi User</a></li>
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">Register</a></li>
+            @auth
+            <li><a class="dropdown-item" href="#">Hola {{auth()->user()->name}}</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <form action="{{route('logout')}}" id='form_logout' method="POST" >
+            @csrf
+            </form>
+            <li><a id='logout' class="dropdown-item" href="#">Logout</a></li>
+            @endauth
+             @guest
+            <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+            <li><a class="dropdown-item" href="{{route('register')}}">Register</a></li>
+            @endguest
           </ul>
         </li>
       </ul>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,4 +29,3 @@ Route::get('/notes/{id}', [NoteController::class, 'show'])->where('id', '[0-9]+'
 Route::put('/notes/{id}', [NoteController::class, 'update'])->where('id', '[0-9]+')->name('notes.update');
 
 Route::delete('/notes/{id}', [NoteController::class, 'delete'])->where('id', '[0-9]+')->name('notes.delete');
-
