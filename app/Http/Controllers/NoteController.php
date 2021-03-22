@@ -10,22 +10,27 @@ class NoteController extends Controller
 {
     public function store(Request $request)
     {   
-        if (!Auth::user()) {
+        
+        if (!$user = Auth::user()) {
         return redirect()->back();
         }
         $validated = $request->validate([
         'title' => 'required|max:100',
         'content' => 'required',
         ]);
+        /* dd($validated); */
         
-        $user=Auth::user(); 
         $user->notes()->create($validated);
+       /*  Auth::user()->notes()->create($validated); */
+      
 
         /* Note::create($validated); */
         /* La misma forma sin simplificar */
-        /* Note::create([
+       /*  Note::create([
             'title' => $validated['title'],
-            'content' => $validated['content']   
+            'content' => $validated['content'],
+            'user_id' => $user->id
+
             ]); */
                 
         return redirect()->route('home');
@@ -40,7 +45,8 @@ class NoteController extends Controller
 
     public function update($id, Request $request)
     {
-        if (!Auth::user()) {
+        $user = Auth::user();
+        if (!$user) {
             return redirect()->back();
             }
 
@@ -48,7 +54,7 @@ class NoteController extends Controller
         //Para modificar algo, hay que recuperar lo que quiero modificar
         $note = Note::findOrFail($id);
 
-        if (Auth::id()!=$note->user_id) {
+        if ($user->id != $note->user_id) {
             return redirect()->back();
             }
 
